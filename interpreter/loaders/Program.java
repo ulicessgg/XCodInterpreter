@@ -2,6 +2,9 @@ package interpreter.loaders;
 
 import java.util.ArrayList;
 import java.util.List;
+import interpreter.bytecodes.ByteCode;
+
+
 public class Program {
 
     private List<ByteCode> program;
