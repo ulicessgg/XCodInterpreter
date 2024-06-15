@@ -19,7 +19,7 @@ class RunTimeStack {
 
     public String verboseDisplay()
     {
-        return null;
+        return null; //need to implement still
     }
 
     public int peek()
@@ -36,26 +36,42 @@ class RunTimeStack {
 
     public int pop()
     {
-        return 0;
+        return this.runTimeStack.removeLast();
     }
 
     public int store(int offsetInFrame)
     {
-        return 0;
+        int storedItem = runTimeStack.removeLast();
+        //originally thought of using set but it would only overwrite the value of the value at the offset index rather
+        //than shifting accordingly will ask for clarification if this is expected or it should stay at set
+        runTimeStack.add(offsetInFrame + framePointer.peek(), storedItem);
+
+        return storedItem;
     }
 
     public int load(int offsetInFrame)
     {
-        return 0;
+        //originally used get but this would lead to two of the same ints being stored in the stack will ask for further
+        //clarification if not will revert to get
+        int loadedItem = runTimeStack.remove(offsetInFrame + framePointer.peek());
+
+        runTimeStack.add(loadedItem);
+
+        return loadedItem;
     }
 
-    public int newFrameAt(int offsetFromTopOfRunStack)
+    public void newFrameAt(int offsetFromTopOfRunStack)
     {
-        return 0;
+        framePointer.push(runTimeStack.size() - offsetFromTopOfRunStack);
     }
 
-    public int popFrame()
+    public void popFrame()
     {
-        return 0;
+        while(runTimeStack.size() > framePointer.peek())
+        {
+            runTimeStack.removeLast();
+        }
+
+        framePointer.pop();
     }
 }
