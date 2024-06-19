@@ -22,8 +22,6 @@ public final class ByteCodeLoader {
      */
     public Program loadCodes() throws InvalidProgramException
     {
-
-
-        return null;
+       return null;
     }
 }
