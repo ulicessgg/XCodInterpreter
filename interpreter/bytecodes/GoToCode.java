@@ -1,4 +1,18 @@
 package interpreter.bytecodes;
 
-public class GoToCode {
+import interpreter.virtualmachine.VirtualMachine;
+
+import java.util.ArrayList;
+
+public class GoToCode extends ByteCode
+{
+    public void init(ArrayList<String> s)
+    {
+
+    }
+
+    public void execute(VirtualMachine vm)
+    {
+
+    }
 }

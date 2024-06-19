@@ -13,16 +13,18 @@ public class Program {
      * Instantiates a program object using an
      * ArrayList
      */
-    public Program() {
-
+    public Program()
+    {
+        program = new ArrayList<>();
     }
 
     /**
      * Gets the size of the current program.
      * @return size of program
      */
-    public int getSize() {
-        return 0;
+    public int getSize()
+    {
+        return program.size();
     }
 
     /**
@@ -30,16 +32,18 @@ public class Program {
      * @param programCounter index of bytecode to get.
      * @return a bytecode.
      */
-    public ByteCode getCode(int programCounter) {
-        return null;
+    public ByteCode getCode(int programCounter)
+    {
+        return program.get(programCounter);
     }
 
     /**
      * Adds a bytecode instance to the Program List.
      * @param c bytecode to be added
      */
-    public void addCode(ByteCode c) {
-
+    public void addCode(ByteCode c)
+    {
+        program.add(c);
     }
 
     /**
@@ -51,7 +55,8 @@ public class Program {
      * ByteCodes are stored in.
      * **** METHOD SIGNATURE CANNOT BE CHANGED *****
      */
-    public void resolveAddress() {
+    public void resolveAddress() //need to ask about this one for future implementation
+    {
 
     }
 }   

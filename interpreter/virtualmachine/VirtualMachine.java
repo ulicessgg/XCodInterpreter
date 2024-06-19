@@ -11,12 +11,14 @@ public class VirtualMachine {
     private Program        program;
     private int            programCounter;
     private boolean        isRunning;
+    private boolean        verboseMode;
 
     public VirtualMachine(Program program) {
         this.program = program;
         this.runTimeStack = new RunTimeStack();
         this.returnAddress = new Stack<>();
         this.programCounter = 0;
+        this.verboseMode = false;
     }
 
     public void executeProgram()
@@ -27,7 +29,17 @@ public class VirtualMachine {
         {
             ByteCode code = program.getCode(programCounter);
             code.execute(this);
+            if(verboseMode)
+            {
+                System.out.println(code);
+                System.out.println(runTimeStack.verboseDisplay());
+            }
             programCounter++;
         }
+    }
+
+    public void setVerboseMode(boolean o)
+    {
+        this.verboseMode = o;
     }
 }

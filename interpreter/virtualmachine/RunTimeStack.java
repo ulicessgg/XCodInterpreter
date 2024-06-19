@@ -16,10 +16,37 @@ class RunTimeStack {
         // point of our language, so its frame pointer is 0.
         framePointer.add(0);
     }
-
     public String verboseDisplay()
     {
-        return null; //need to implement still
+        String display = "";
+
+        for (int i = 0; i < framePointer.size(); i++)
+        {
+            int start = framePointer.get(i);
+            int end;
+
+            if(i + 1 < framePointer.size())
+            {
+                end = framePointer.get(i + 1);
+            }
+            else
+            {
+                end =  runTimeStack.size();
+            }
+
+            display = "[";
+
+            for(int j = start; j < end; j++)
+            {
+                display += runTimeStack.get(j);
+                if(j < end - 1)
+                {
+                    display += ", ";
+                }
+            }
+            display += "]";
+        }
+        return display.trim();
     }
 
     public int peek()
@@ -29,7 +56,7 @@ class RunTimeStack {
 
     public int push(int i )
     {
-        this.runTimeStack.add(i);
+        runTimeStack.add(i);
 
         return i;
     }
@@ -42,8 +69,7 @@ class RunTimeStack {
     public int store(int offsetInFrame)
     {
         int storedItem = runTimeStack.removeLast();
-        //originally thought of using set but it would only overwrite the value of the value at the offset index rather
-        //than shifting accordingly will ask for clarification if this is expected or it should stay at set
+
         runTimeStack.add(offsetInFrame + framePointer.peek(), storedItem);
 
         return storedItem;

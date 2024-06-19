@@ -20,7 +20,10 @@ public final class ByteCodeLoader {
      * @throws InvalidProgramException thrown when 
      * loadCodes fails.
      */
-    public Program loadCodes() throws InvalidProgramException {
-       return null;
+    public Program loadCodes() throws InvalidProgramException
+    {
+
+
+        return null;
     }
 }
