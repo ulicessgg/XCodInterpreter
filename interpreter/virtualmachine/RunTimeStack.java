@@ -68,7 +68,7 @@ class RunTimeStack {
 
     public int store(int offsetInFrame)
     {
-        int storedItem = runTimeStack.removeLast();
+        int storedItem = pop();
 
         runTimeStack.add(offsetInFrame + framePointer.peek(), storedItem);
 

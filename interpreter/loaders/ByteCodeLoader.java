@@ -1,6 +1,11 @@
 package interpreter.loaders;
 
+import interpreter.bytecodes.ByteCode;
 import interpreter.loaders.Program;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public final class ByteCodeLoader {
     private String codSourceFileName;
@@ -22,6 +27,26 @@ public final class ByteCodeLoader {
      */
     public Program loadCodes() throws InvalidProgramException
     {
-       return null;
+       Program exe = new Program();
+
+       try(BufferedReader lines = new BufferedReader(new FileReader(codSourceFileName)))
+       {
+            String line;
+
+            while((line = lines.readLine()) != null)
+            {
+                String[] temp = line.split("\\s+");
+                String token = temp[0];
+
+                //switch statement or the use of the code table would go here i think
+            }
+       }
+       catch(IOException e)
+       {
+           throw new InvalidProgramException("Error");
+       }
+
+       exe.resolveAddress();
+       return exe;
     }
 }

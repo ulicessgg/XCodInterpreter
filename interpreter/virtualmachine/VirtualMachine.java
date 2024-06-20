@@ -38,8 +38,38 @@ public class VirtualMachine {
         }
     }
 
-    public void setVerboseMode(boolean o)
+    public void setRunning(boolean run)
     {
-        this.verboseMode = o;
+        this.isRunning = run;
+    }
+
+    public void setVerboseMode(boolean mode)
+    {
+        this.verboseMode = mode;
+    }
+
+    public int pop()
+    {
+        return this.runTimeStack.pop();
+    }
+
+    public void setProgramCounter(int address)
+    {
+        this.programCounter = address;
+    }
+
+    public int getProgramCounter()
+    {
+        return this.programCounter;
+    }
+
+    public void pushReturnAddress(int address)
+    {
+        returnAddress.push(address);
+    }
+
+    public int popReturnAddress(int address)
+    {
+        return returnAddress.pop();
     }
 }

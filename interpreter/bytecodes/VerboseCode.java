@@ -10,7 +10,7 @@ public class VerboseCode extends ByteCode
 
     public void init(ArrayList<String> s)
     {
-        if(s.size() > 0)
+        if(!s.isEmpty())
         {
             status = s.get(0).toUpperCase();
         }
