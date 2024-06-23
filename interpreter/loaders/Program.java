@@ -60,32 +60,6 @@ public class Program {
     {
         Map<String, Integer> labels = new HashMap<>();
 
-        // First pass: record all label positions
-        for (int i = 0; i < program.size(); i++)
-        {
-            if (program.get(i) instanceof LabelCode)
-            {
-                LabelCode label = (LabelCode) program.get(i);
-                labels.put(label.getLabel(), i);
-            }
-        }
-
-        // Second pass: resolve addresses for Goto, Call, and FalseBranch codes
-        for (ByteCode byteCode : program)
-        {
-            if (byteCode instanceof GoToCode)
-            {
-                GoToCode goTo = (GoToCode) byteCode;
-                goTo.setAddress(labels.get(goTo.getLabel()));
-            } else if (byteCode instanceof CallCode)
-            {
-                CallCode call = (CallCode) byteCode;
-                call.setAddress(labels.get(call.getLabel()));
-            } else if (byteCode instanceof FalseBranchCode)
-            {
-                FalseBranchCode falseBranch = (FalseBranchCode) byteCode;
-                falseBranch.setAddress(labels.get(falseBranch.getLabel()));
-            }
-        }
+        return null;
     }
 }   
