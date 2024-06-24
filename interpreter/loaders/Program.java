@@ -56,36 +56,8 @@ public class Program {
      * ByteCodes are stored in.
      * **** METHOD SIGNATURE CANNOT BE CHANGED *****
      */
-    public void resolveAddress() //need to ask about this one for possible suggestions and debugs, past implementation with help didnt work run tests on this using cod filesgit
+    public void resolveAddress() //need to ask about this one for possible suggestions and debugs, past implementation with help didnt work run tests on this using cod files
     {
-        Map<String, Integer> labels = new HashMap<>();
-
-        for (int i = 0; i < program.size(); i++)
-        {
-            if (program.get(i) instanceof LabelCode)
-            {
-                LabelCode label = (LabelCode) program.get(i);
-                labels.put(label.getLabel(), i);
-            }
-        }
-
-        for (int j = 0; j < program.size(); j++)
-        {
-            if (program.get(j) instanceof GoToCode)
-            {
-                GoToCode goTo = (GoToCode) program.get(j);
-                goTo.setAddress(labels.get(goTo.getLabel()));
-            }
-            else if (program.get(j) instanceof CallCode)
-            {
-                CallCode call = (CallCode) program.get(j);
-                call.setAddress(labels.get(call.getLabel()));
-            }
-            else if (program.get(j) instanceof FalseBranchCode)
-            {
-                FalseBranchCode falseBranch = (FalseBranchCode) program.get(j);
-                falseBranch.setAddress(labels.get(falseBranch.getLabel()));
-            }
-        }
+        
     }
 }   

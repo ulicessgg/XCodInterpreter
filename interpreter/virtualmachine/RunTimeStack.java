@@ -56,7 +56,7 @@ class RunTimeStack {
 
     public int push(int i )
     {
-        runTimeStack.add(i);
+        this.runTimeStack.add(i);
 
         return i;
     }

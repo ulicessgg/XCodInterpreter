@@ -72,4 +72,9 @@ public class VirtualMachine {
     {
         return returnAddress.pop();
     }
+
+    public int push(int value)
+    {
+        return this.runTimeStack.push(value);
+    }
 }
