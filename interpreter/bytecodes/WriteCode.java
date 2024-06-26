@@ -8,7 +8,6 @@ public class WriteCode extends ByteCode
 {
     public void init(List<String> s)
     {
-
     }
 
     public void execute(VirtualMachine vm)

@@ -10,12 +10,92 @@ public class BopCode extends ByteCode
 
     public void init(List<String> s)
     {
-
+        if(!s.isEmpty())
+        {
+            operator = s.getFirst();
+        }
     }
 
     public void execute(VirtualMachine vm)
     {
+        int num1 = vm.pop();
+        int num2 = vm.pop();
+        int result = 0;
 
+        switch(operator)
+        {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "/":
+                result = num1 / num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "==":
+                if(num1 == num2)
+                {
+                    result = 1;
+                }
+
+                break;
+            case "!=":
+                if(num1 != num2)
+                {
+                    result = 1;
+                }
+
+                break;
+            case "<=":
+                if(num1 <= num2)
+                {
+                    result = 1;
+                }
+
+                break;
+            case "<":
+                if(num1 < num2)
+                {
+                    result = 1;
+                }
+
+                break;
+            case ">=":
+                if(num1 >= num2)
+                {
+                    result = 1;
+                }
+
+                break;
+            case ">":
+                if(num1 > num2)
+                {
+                    result = 1;
+                }
+
+                break;
+            case "&":
+                if(num1 == 1 && num2 == 1)
+                {
+                    result = 1;
+                }
+
+                break;
+            case "|":
+                if(num1 == 1 || num2 == 1)
+                {
+                    result = 1;
+                }
+
+                break;
+            default:
+                break;
+        }
+        vm.push(result);
     }
 
     public String toString()

@@ -40,6 +40,11 @@ public class VirtualMachine {
         this.runTimeStack.newFrameAt((args));
     }
 
+    public void storeReturnAddress(int address) // for call
+    {
+        this.returnAddress.push(address);
+    }
+
     public void setRunning(boolean run) // for halt
     {
         this.isRunning = run;
@@ -78,6 +83,11 @@ public class VirtualMachine {
     public void setVerboseMode(boolean mode) // for verbose
     {
         this.verboseMode = mode;
+    }
+
+    public boolean getVerboseMode() // for verbose
+    {
+        return this.verboseMode;
     }
 
     public int peek() // for write

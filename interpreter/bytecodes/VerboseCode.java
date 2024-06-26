@@ -10,11 +10,18 @@ public class VerboseCode extends ByteCode
 
     public void init(List<String> s)
     {
-        // need to figure this out waiting for response
     }
 
     public void execute(VirtualMachine vm)
     {
+        if(vm.getVerboseMode())
+        {
+            this.value = false;
+        }
+        if(!vm.getVerboseMode())
+        {
+            this.value = true;
+        }
         vm.setVerboseMode(value);
     }
 

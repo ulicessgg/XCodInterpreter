@@ -6,20 +6,46 @@ import java.util.ArrayList;
 
 public class CallCode extends ByteCode
 {
+    private String label;
+    private int address;
+
     public void init(List<String> s)
     {
-
+        if(!s.isEmpty())
+        {
+            label = s.getFirst();
+        }
     }
 
     public void execute(VirtualMachine vm)
     {
-
+        vm.storeReturnAddress(address);
     }
 
     public String toString()
     {
-        String retVal = "";
+        String retVal = "CALL " + label;
 
         return retVal;
+    }
+
+    public void setLabel(String label)
+    {
+        this.label = label;
+    }
+
+    public String getLabel()
+    {
+        return this.label;
+    }
+
+    public void setAddress(int address)
+    {
+        this.address = address;
+    }
+
+    public int getAddress()
+    {
+        return this.address;
     }
 }
