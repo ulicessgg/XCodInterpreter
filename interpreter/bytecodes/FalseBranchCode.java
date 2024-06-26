@@ -1,35 +1,25 @@
 package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
-
+import java.util.List;
 import java.util.ArrayList;
 
 public class FalseBranchCode extends ByteCode
 {
-    private String label;
-    private int address;
-    public void init(ArrayList<String> s)
+    public void init(List<String> s)
     {
-        label = s.getFirst();
+
     }
 
     public void execute(VirtualMachine vm)
     {
-        int poppedValue = vm.pop();
 
-        if(poppedValue == 0)
-        {
-            vm.setProgramCounter(address);
-        }
     }
 
-    public void setAddress(int address)
+    public String toString()
     {
-        this.address = address;
-    }
+        String retVal = "";
 
-    public String getLabel()
-    {
-        return label;
+        return retVal;
     }
 }

@@ -2,10 +2,10 @@ package interpreter.loaders;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import interpreter.bytecodes.*;
 import java.util.Map;
 import java.util.HashMap;
+
 public class Program {
 
     private List<ByteCode> program;
@@ -58,6 +58,16 @@ public class Program {
      */
     public void resolveAddress() //need to ask about this one for possible suggestions and debugs, past implementation with help didnt work run tests on this using cod files
     {
-        
+        Map<String, Integer> labels = new HashMap<>();
+
+        for (int i = 0; i < program.size(); i++)
+        {
+
+        }
+
+        for (int j = 0; j < program.size(); j++)
+        {
+            
+        }
     }
 }   

@@ -6,12 +6,12 @@ import interpreter.bytecodes.ByteCode;
 
 public class VirtualMachine {
 
-    private RunTimeStack   runTimeStack;
+    private RunTimeStack runTimeStack;
     private Stack<Integer> returnAddress;
-    private Program        program;
-    private int            programCounter;
-    private boolean        isRunning;
-    private boolean        verboseMode;
+    private Program program;
+    private int programCounter;
+    private boolean isRunning;
+    private boolean verboseMode;
 
     public VirtualMachine(Program program) {
         this.program = program;
@@ -21,16 +21,13 @@ public class VirtualMachine {
         this.verboseMode = false;
     }
 
-    public void executeProgram()
-    {
+    public void executeProgram() {
         isRunning = true;
 
-        while(isRunning)
-        {
+        while (isRunning) {
             ByteCode code = program.getCode(programCounter);
             code.execute(this);
-            if(verboseMode)
-            {
+            if (verboseMode) {
                 System.out.println(code);
                 System.out.println(runTimeStack.verboseDisplay());
             }
@@ -38,43 +35,53 @@ public class VirtualMachine {
         }
     }
 
-    public void setRunning(boolean run)
+    public void newFrame(int args) // for args
+    {
+        this.runTimeStack.newFrameAt((args));
+    }
+
+    public void setRunning(boolean run) // for halt
     {
         this.isRunning = run;
     }
 
-    public void setVerboseMode(boolean mode)
+    public int push(int value) // for litCode
     {
-        this.verboseMode = mode;
+        return this.runTimeStack.push(value);
     }
 
-    public int pop()
+    public int load(int offset) // for load
+    {
+        return this.runTimeStack.load(offset);
+    }
+
+    public int pop() // for pop
     {
         return this.runTimeStack.pop();
     }
 
-    public void setProgramCounter(int address)
+    public void popFrame() // for return
     {
-        this.programCounter = address;
+        this.runTimeStack.popFrame();
     }
 
-    public int getProgramCounter()
+    public void popReturnAddress() // for return
     {
-        return this.programCounter;
+        this.programCounter = this.returnAddress.pop();
     }
 
-    public void pushReturnAddress(int address)
+    public int store(int offset) // for store
     {
-        returnAddress.push(address);
+        return this.runTimeStack.store(offset);
     }
 
-    public int popReturnAddress(int address)
+    public void setVerboseMode(boolean mode) // for verbose
     {
-        return returnAddress.pop();
+        this.verboseMode = mode;
     }
 
-    public int push(int value)
+    public int peek() // for write
     {
-        return this.runTimeStack.push(value);
+        return this.runTimeStack.peek();
     }
 }

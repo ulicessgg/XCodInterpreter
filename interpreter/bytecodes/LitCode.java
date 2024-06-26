@@ -1,18 +1,15 @@
 package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class LitCode extends ByteCode
 {
     private String label;
-
     private int value;
 
-    private List<String> args;
-    public void init(ArrayList<String> s)
+    public void init(List<String> s)
     {
         this.value = Integer.parseInt(s.get(1));
         if(s.size() > 2)

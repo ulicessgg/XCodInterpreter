@@ -1,32 +1,36 @@
 package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
-
+import java.util.List;
 import java.util.ArrayList;
 
 public class VerboseCode extends ByteCode
 {
-    private String status;
+    private boolean value;
 
-    public void init(ArrayList<String> s)
+    public void init(List<String> s)
     {
-        if(!s.isEmpty())
-        {
-            status = s.get(0).toUpperCase();
-        }
+        // need to figure this out waiting for response
     }
 
     public void execute(VirtualMachine vm)
     {
-        switch(status)
+        vm.setVerboseMode(value);
+    }
+
+    public String toString()
+    {
+        String retVal = "VERBOSE ";
+
+        if(value)
         {
-            case "ON":
-                vm.setVerboseMode(true);
-            case "OFF":
-                vm.setVerboseMode(false);
-            default:
-                vm.setVerboseMode(false);
+            retVal = retVal + "ON";
         }
-        System.out.println("VERBOSE" + status);
+        else
+        {
+            retVal = retVal + "OFF";
+        }
+
+        return retVal;
     }
 }

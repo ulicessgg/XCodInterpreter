@@ -1,27 +1,25 @@
 package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
-
+import java.util.List;
 import java.util.ArrayList;
 
 public class LabelCode extends ByteCode
 {
-
-    private String label;
-    public void init(ArrayList<String> s)
+    public void init(List<String> s)
     {
-        if(!s.isEmpty())
-        {
-            label = s.getFirst();
-        }
+
     }
 
     public void execute(VirtualMachine vm)
     {
+
     }
 
-    public String getLabel()
+    public String toString()
     {
-        return label;
+        String retVal = "";
+
+        return retVal;
     }
 }
