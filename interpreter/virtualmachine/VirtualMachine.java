@@ -1,5 +1,6 @@
 package interpreter.virtualmachine;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 import interpreter.loaders.Program;
 import interpreter.bytecodes.ByteCode;
@@ -45,6 +46,16 @@ public class VirtualMachine {
         this.returnAddress.push(address);
     }
 
+    public void setProgramCounter(int address) // for call and falsebranch
+    {
+        this.programCounter = address;
+    }
+
+    public int getProgramCounter() // for call
+    {
+        return this.programCounter;
+    }
+
     public void setRunning(boolean run) // for halt
     {
         this.isRunning = run;
@@ -70,9 +81,13 @@ public class VirtualMachine {
         this.runTimeStack.popFrame();
     }
 
-    public void popReturnAddress() // for return
+    public int popReturnAddress() // for return
     {
-        this.programCounter = this.returnAddress.pop();
+        if(this.returnAddress.isEmpty())
+        {
+            throw new EmptyStackException();
+        }
+        return this.returnAddress.pop();
     }
 
     public int store(int offset) // for store
