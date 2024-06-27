@@ -12,7 +12,7 @@ public class LabelCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            label = s.getFirst();
+            label = s.get(1);
         }
     }
 

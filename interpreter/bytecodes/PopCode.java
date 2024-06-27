@@ -12,7 +12,7 @@ public class PopCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            this.num = Integer.parseInt(s.getFirst());
+            this.num = Integer.parseInt(s.get(1));
         }
     }
 

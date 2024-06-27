@@ -12,7 +12,7 @@ public class BopCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            operator = s.getFirst();
+            operator = s.get(1);
         }
     }
 

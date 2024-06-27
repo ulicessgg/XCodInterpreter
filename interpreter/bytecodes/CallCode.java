@@ -13,13 +13,14 @@ public class CallCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            label = s.getFirst();
+            label = s.get(1);
         }
     }
 
     public void execute(VirtualMachine vm)
     {
         vm.storeReturnAddress(address);
+        vm.setProgramCounter(address);
     }
 
     public String toString()

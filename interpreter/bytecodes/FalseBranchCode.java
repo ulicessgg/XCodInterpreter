@@ -13,17 +13,18 @@ public class FalseBranchCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            label = s.getFirst();
+            label = s.get(1);
         }
     }
 
     public void execute(VirtualMachine vm)
     {
-        int top = vm.pop();
+        int top = vm.peek();
 
         if(top == 0)
         {
-
+            vm.pop();
+            vm.setProgramCounter(address);
         }
     }
 

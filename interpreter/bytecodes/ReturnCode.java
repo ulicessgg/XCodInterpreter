@@ -18,9 +18,12 @@ public class ReturnCode extends ByteCode
 
     public void execute(VirtualMachine vm)
     {
-        int rVaL = vm.pop();
+        int value = vm.pop();
         vm.popFrame();
-        vm.popReturnAddress();
+        vm.push(value);
+
+        int address = vm.popReturnAddress();
+        vm.setProgramCounter(address);
     }
 
     public String toString()

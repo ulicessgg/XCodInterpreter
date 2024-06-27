@@ -14,11 +14,11 @@ public class StoreCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            this.offset = Integer.parseInt(s.getFirst());
+            this.offset = Integer.parseInt(s.get(1));
         }
         if(s.size() > 1)
         {
-            this.identifer = s.get(1);
+            this.identifer = s.get(2);
         }
     }
 
