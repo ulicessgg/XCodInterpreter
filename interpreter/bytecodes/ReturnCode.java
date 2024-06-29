@@ -18,7 +18,7 @@ public class ReturnCode extends ByteCode
 
     public void execute(VirtualMachine vm)
     {
-        int value = vm.pop();
+        int value = vm.peek();
         vm.popFrame();
         vm.push(value);
 

@@ -1,6 +1,7 @@
 package interpreter.virtualmachine;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 
@@ -49,8 +50,11 @@ class RunTimeStack {
         return display.trim();
     }
 
-    public int peek()
-    {
+    public int peek() {
+        if (runTimeStack.isEmpty())
+        {
+            throw new EmptyStackException();
+        }
         return this.runTimeStack.getLast();
     }
 
@@ -63,41 +67,55 @@ class RunTimeStack {
 
     public int pop()
     {
+        if (runTimeStack.isEmpty())
+        {
+            throw new EmptyStackException();
+        }
         return this.runTimeStack.removeLast();
     }
 
     public int store(int offsetInFrame)
     {
-        int storedItem = pop();
+        if (runTimeStack.isEmpty())
+        {
+            throw new EmptyStackException();
+        }
 
-        runTimeStack.add(offsetInFrame + framePointer.peek(), storedItem);
+        int storedItem = this.pop();
+
+        runTimeStack.set(offsetInFrame + framePointer.peek(), storedItem);
 
         return storedItem;
     }
 
     public int load(int offsetInFrame)
     {
-        //originally used get but this would lead to two of the same ints being stored in the stack will ask for further
-        //clarification if not will revert to get
-        int loadedItem = runTimeStack.remove(offsetInFrame + framePointer.peek());
-
-        runTimeStack.add(loadedItem);
-
-        return loadedItem;
+        if (framePointer.isEmpty() || framePointer.peek() + offsetInFrame >= runTimeStack.size())
+        {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.push(runTimeStack.get(offsetInFrame + framePointer.peek()));
     }
 
     public void newFrameAt(int offsetFromTopOfRunStack)
     {
+        if (offsetFromTopOfRunStack > runTimeStack.size())
+        {
+            throw new IndexOutOfBoundsException();
+        }
         framePointer.push(runTimeStack.size() - offsetFromTopOfRunStack);
     }
 
     public void popFrame()
     {
-        while(runTimeStack.size() > framePointer.peek())
+        if (framePointer.isEmpty())
         {
-            runTimeStack.removeLast();
+            throw new EmptyStackException();
         }
-
-        framePointer.pop();
+        int start = framePointer.pop();
+        while(runTimeStack.size() > start)
+        {
+            this.pop();
+        }
     }
 }

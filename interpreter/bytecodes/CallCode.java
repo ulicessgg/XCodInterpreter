@@ -19,7 +19,7 @@ public class CallCode extends ByteCode
 
     public void execute(VirtualMachine vm)
     {
-        vm.storeReturnAddress(address);
+        vm.storeReturnAddress();
         vm.setProgramCounter(address);
     }
 

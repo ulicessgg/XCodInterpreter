@@ -19,7 +19,7 @@ public class GoToCode extends ByteCode
 
     public void execute(VirtualMachine vm)
     {
-
+        vm.setProgramCounter(address);
     }
 
     public String toString()

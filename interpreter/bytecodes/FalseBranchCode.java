@@ -26,6 +26,10 @@ public class FalseBranchCode extends ByteCode
             vm.pop();
             vm.setProgramCounter(address);
         }
+        else
+        {
+            vm.pop();
+        }
     }
 
     public String toString()

@@ -12,7 +12,7 @@ public class ArgsCode extends ByteCode
     {
         if(!s.isEmpty())
         {
-            args = s.size();
+            args = Integer.parseInt(s.get(1));
         }
     }
 

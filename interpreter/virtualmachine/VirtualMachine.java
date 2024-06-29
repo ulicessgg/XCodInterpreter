@@ -41,19 +41,14 @@ public class VirtualMachine {
         this.runTimeStack.newFrameAt((args));
     }
 
-    public void storeReturnAddress(int address) // for call
+    public void storeReturnAddress() // for call
     {
-        this.returnAddress.push(address);
+        this.returnAddress.push(programCounter);
     }
 
     public void setProgramCounter(int address) // for call and falsebranch
     {
         this.programCounter = address;
-    }
-
-    public int getProgramCounter() // for call
-    {
-        return this.programCounter;
     }
 
     public void setRunning(boolean run) // for halt
@@ -85,7 +80,7 @@ public class VirtualMachine {
     {
         if(this.returnAddress.isEmpty())
         {
-            throw new EmptyStackException();
+            this.storeReturnAddress();
         }
         return this.returnAddress.pop();
     }

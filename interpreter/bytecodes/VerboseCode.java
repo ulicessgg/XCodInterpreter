@@ -6,37 +6,30 @@ import java.util.ArrayList;
 
 public class VerboseCode extends ByteCode
 {
-    private boolean value;
+    private String value;
+    private boolean onOff;
 
     public void init(List<String> s)
     {
+        this.value = s.get(1);
     }
 
     public void execute(VirtualMachine vm)
     {
-        if(vm.getVerboseMode())
+        if(value.equals("ON"))
         {
-            this.value = false;
+            this.onOff = true;
         }
-        if(!vm.getVerboseMode())
+        if(value.equals("OFF"))
         {
-            this.value = true;
+            this.onOff = false;
         }
-        vm.setVerboseMode(value);
+        vm.setVerboseMode(onOff);
     }
 
     public String toString()
     {
-        String retVal = "VERBOSE ";
-
-        if(value)
-        {
-            retVal = retVal + "ON";
-        }
-        else
-        {
-            retVal = retVal + "OFF";
-        }
+        String retVal = "VERBOSE " + value;
 
         return retVal;
     }
