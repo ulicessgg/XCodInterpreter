@@ -18,8 +18,8 @@ public class BopCode extends ByteCode
 
     public void execute(VirtualMachine vm)
     {
-        int num2 = vm.pop();
-        int num1 = vm.pop();
+        int num2 = vm.pop(1);
+        int num1 = vm.pop(1);
         int result = 0;
 
         switch(operator)

@@ -74,6 +74,11 @@ class RunTimeStack {
         return this.runTimeStack.removeLast();
     }
 
+    public int getFrames() // was suggested to add this so far empty exception is still thrown due to pop
+    {
+        return this.runTimeStack.size() - framePointer.peek();
+    }
+
     public int store(int offsetInFrame)
     {
         if (runTimeStack.isEmpty())

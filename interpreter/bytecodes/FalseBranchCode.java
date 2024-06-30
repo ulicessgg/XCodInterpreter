@@ -23,12 +23,12 @@ public class FalseBranchCode extends ByteCode
 
         if(top == 0)
         {
-            vm.pop();
+            vm.pop(1);
             vm.setProgramCounter(address);
         }
         else
         {
-            vm.pop();
+            vm.pop(1);
         }
     }
 

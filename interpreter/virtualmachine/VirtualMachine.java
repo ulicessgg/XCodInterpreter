@@ -66,9 +66,28 @@ public class VirtualMachine {
         return this.runTimeStack.load(offset);
     }
 
-    public int pop() // for pop
+    public int pop(int num) // for pop
     {
-        return this.runTimeStack.pop();
+        int value = 0;
+
+        if(num > runTimeStack.getFrames())
+        {
+            int tempNum = runTimeStack.getFrames();
+
+            for (int i = 0; i < tempNum; i++)
+            {
+                value = this.runTimeStack.pop();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < num; i++)
+            {
+                value = this.runTimeStack.pop();
+            }
+        }
+
+        return value;
     }
 
     public void popFrame() // for return
