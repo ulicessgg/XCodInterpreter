@@ -20,7 +20,7 @@ public class ReadCode extends ByteCode
         while(!valid)
         {
             System.out.println("Please enter an integer: ");
-            if(input.hasNextInt())
+            if(input.hasNextInt() || input.nextInt() < 1)
             {
                 value = input.nextInt();
                 valid = true;
