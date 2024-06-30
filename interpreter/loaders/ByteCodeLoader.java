@@ -44,7 +44,6 @@ public final class ByteCodeLoader {
                ByteCode bc = (ByteCode) c.getDeclaredConstructor().newInstance();
                bc.init(Arrays.asList(tokens));
                program.addCode(bc);
-               //System.out.println(c);
            }
        }
 
